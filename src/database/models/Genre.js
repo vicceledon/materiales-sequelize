@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       autoIncrement: true,
       primaryKey: true,
-      unique,
     },
     name: {
       type: DataTypes.STRING(100),
@@ -14,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER(10),
     },
     active: {
-      type: DataTypes.TINYINTEGER(1),
+      type: DataTypes.TINYINT(1),
     },
   };
   let config = {
