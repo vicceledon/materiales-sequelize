@@ -12,6 +12,10 @@ const app = express();
 app.set("views", path.resolve(__dirname, "./views"));
 app.set("view engine", "ejs");
 
+//URL encode  - Para que nos pueda llegar la información desde el formulario al req.body
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use(express.static(path.resolve(__dirname, "../public")));
 
 app.use("/", indexRouter);

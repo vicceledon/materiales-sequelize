@@ -31,6 +31,48 @@ const moviesController = {
       res.render("moviesDetail", { movie: movie });
     });
   },
+  add: (req, res) => {
+    res.render("moviesAdd");
+  },
+  create: (req, res) => {
+    db.Movie.create({
+      title: req.body.title,
+      rating: req.body.rating,
+      awards: req.body.awards,
+      release_date: req.body.release_date,
+      length: req.body.length,
+    }).then(() => {
+      res.redirect("/movies");
+    });
+  },
+  edit: (req, res) => {
+    db.Movie.findByPk(req.params.id).then((movie) => {
+      res.render("moviesEdit", { Movie: movie });
+    });
+  },
+  update: (req, res) => {
+    db.Movie.update(
+      {
+        title: req.body.title,
+        rating: req.body.rating,
+        awards: req.body.awards,
+        release_date: req.body.release_date,
+        length: req.body.length,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      }
+    ).then(() => {
+      res.redirect("/movies");
+    });
+  },
+  delete: (req, res) => {
+    db.Movie.destroy({
+      where: { id: req.params.id },
+    }).then(() => res.redirect("/movies"));
+  },
 };
 
 module.exports = moviesController;

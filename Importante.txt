@@ -1,0 +1,9 @@
+Para dar formato de Fecha y que pueda ser leido por una etiqueta <input> del tipo date hacer:
+
+const date = new Date(); //Es necesario tener una variable Date.
+date.toLocaleDateString('en-GB').split('/').reverse().join('-')
+
+o 
+
+date.toLocaleDateString('en-CA')
+
