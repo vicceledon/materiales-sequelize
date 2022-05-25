@@ -11,15 +11,15 @@
     <figure>
       <img src="/img/logo-DH.png" alt="Logo Digital House" />
     </figure>
-    <h1 class="titulo">Película a Editar: <%= Movie.title %></h1>
+    <h1 class="titulo">Película Editada: <%= Movie.title %></h1>
     <section class="formulario">
-      <form action="/movies/update/<%= Movie.id %>" method="POST">
+      <form action="/movies/update/<%= Movie.id %>?_method=PUT" method="POST">
         <label for="title">Title </label>
         <p>
           <input
             type="text"
             name="title"
-            id="title"
+            id=""
             value="<%= Movie.title %>"
             required
           />
@@ -29,7 +29,7 @@
           <input
             type="number"
             name="rating"
-            id="rating"
+            id=""
             value="<%= Movie.rating %>"
             required
           />
@@ -39,7 +39,7 @@
           <input
             type="number"
             name="awards"
-            id="awards"
+            id=""
             value="<%= Movie.awards %>"
             required
           />
@@ -49,10 +49,9 @@
           <input
             type="date"
             name="release_date"
-            id="release_date"
-            value="<%= Movie.release_date.toLocaleDateString('en-CA') %>"
-            required
-          />
+            id=""
+            value="<%= Movie.release_date.toLocaleDateString('en-CA') %>" required/>
+          <!-- Se agregó toLocaleDateString('en-CA') para una visualización correcta de la fecha-->
         </p>
         <label for="length">Length </label>
         <p>
@@ -64,6 +63,25 @@
             required
           />
         </p>
+        <label for="genre_id">Genre </label>
+        <p>
+          <select name="genre_id" id="" required>
+            <% allGenres.forEach(genre => {%>
+            <option value="<%= genre.id %>" <% if (Movie.genre && Movie.genre.id == genre.id) { %>
+                    <%= 'selected' %>
+                    <% }; %>>
+                <%= genre.name %>
+            </option>
+            <%});%>
+            <!--Se agregó Movie.genre && para validar que la clave genre exista-->
+          </select>
+        </p>
+
+        <!--
+            <label for="genre_id">Genre ID </label>
+            <p><input type="number" name="genre_id" id="" value="<%= Movie.genre_id %>"></p>
+        -->
+
         <br />
         <p>
           <button class="botonAgregar" type="submit">Actualizar</button>

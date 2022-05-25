@@ -15,15 +15,22 @@
     <p>RATING: <%= movie.rating %></p>
     <p>AWARDS: <%= movie.awards %></p>
     <p>LENGTH: <%= movie.length + ' min'%></p>
-    <p>RELEASE DATE: <%= movie.release_date.toLocaleDateString('en-GB') %></p>
+    <p>RELEASE DATE: <%= movie.release_date %></p>
+    <br />
+    <section>
+      <br />
+      <p>
+        <a href="/movies/edit/<%= movie.id%>"
+          ><button class="botonModificar" type="submit">Modificar</button>
+        </a>
 
-    <p>
-      <a href="/movies/edit/<%= movie.id %>">
-        <button class="botonAgregar">Editar Película</button></a
-      >
-      <a href="/movies/delete/<%= movie.id %>">
-        <button class="botonAgregar">Borrar Película</button></a
-      >
-    </p>
+        <a href="/movies/delete/<%= movie.id%>"
+          ><button class="botonBorrar" type="submit">Borrar</button>
+        </a>
+        <a href="/movies"
+          ><button class="botonVolver">Listado de Películas</button></a
+        >
+      </p>
+    </section>
   </body>
 </html>

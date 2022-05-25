@@ -14,11 +14,11 @@
       </figure>
     <h1>Estas seguro de querer borrar esta película: <%= Movie.title %>???</h1>
     <p>
-        <form action="/movies/delete/<%= Movie.id %>" method="POST">
+        <form action="/movies/delete/<%= Movie.id %>?_method=DELETE" method="POST">
             <br>
             <p> <button class="botonBorrar" type="submit">Borrar la Película</button>
             
-            <a  class="botonVolver" href="/movies">Listado de Películas</a></p>
+            <a href="/movies"><button class="botonVolver">Listado de Películas</button></a></p>
 
         </form>
     </p>
